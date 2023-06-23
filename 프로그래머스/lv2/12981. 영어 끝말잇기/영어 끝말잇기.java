@@ -10,11 +10,6 @@ class Solution {
                 
                 char a = words[i-1].charAt(words[i-1].length()-1);
                 char b = words[i].charAt(0);
-                if(words[i-1].length() == 1 || words[i].length() ==1){
-                    answer[0] = i % n + 1;
-                    answer[1] = i / n + 1;
-                    break;
-                }
                 if(a != b || word.contains(words[i])){
                     answer[0] = i % n + 1;
                     answer[1] = i / n + 1;
