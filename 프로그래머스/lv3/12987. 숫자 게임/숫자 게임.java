@@ -5,13 +5,12 @@ class Solution {
         Arrays.sort(A);
         Arrays.sort(B);
         int len = A.length;
-        for(int i = A.length-1; i >= 0; i--){
-            for(int j = len-1; j>=0; j--){
-                if(B[j] > A[i]){
+        int j = A.length-1;
+        for(int i = len-1; i >= 0; i--){
+            if(B[j] > A[i]){
                     answer++;
-                    len = j;
-                    break;
-                }
+                    len = i;
+                    j--;
             }
         }
         return answer;
