@@ -14,7 +14,7 @@ class Solution {
         result[i] = true;
         for(int j = 0; j < computers.length; j++){
             if(i != j && computers[i][j] == 1 && result[j] == false){
-                result = bfs(computers, j, result);
+                bfs(computers, j, result);
             }
         }
         return result;
