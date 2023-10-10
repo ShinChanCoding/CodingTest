@@ -3,25 +3,32 @@ import java.util.*;
 class Solution {
     public int solution(int k, int[] tangerine) {
         int answer = 0;
-        Map<Integer, Integer> countMap = new HashMap<>();
-
-        // 귤의 크기별로 개수를 카운트
-        for (int size : tangerine) {
-            countMap.put(size, countMap.getOrDefault(size, 0) + 1);
+        List<Integer> result = new ArrayList<>();
+        Arrays.sort(tangerine);
+        int value = tangerine[0];
+        int cnt = 0;
+        for (int i = 0; i < tangerine.length; i++) {
+            if (value == tangerine[i]) {
+                cnt++;
+            } else {
+                result.add(cnt);
+                value = tangerine[i];
+                cnt = 1;
+            }
+            if (i == tangerine.length - 1) {
+                result.add(cnt);
+            }
         }
 
-        List<Integer> counts = new ArrayList<>(countMap.values());
-        Collections.sort(counts, Collections.reverseOrder());
-
+        Collections.sort(result, Collections.reverseOrder());
         int total = 0;
-        for (int i = 0; i < counts.size(); i++) {
+        for (int j = 0; j < result.size(); j++) {
             if (total >= k) {
                 break;
             }
-            total += counts.get(i);
+            total += result.get(j);
             answer++;
         }
-
         return answer;
     }
 }
