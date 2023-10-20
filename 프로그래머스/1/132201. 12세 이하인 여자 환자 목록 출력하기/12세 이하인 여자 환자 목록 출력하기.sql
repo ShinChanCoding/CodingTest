@@ -1,0 +1,4 @@
+SELECT PT_NAME, PT_NO, GEND_CD, AGE, COALESCE(TLNO, 'NONE') AS TLNO
+FROM patient
+WHERE age <= 12 AND gend_cd = 'W'
+ORDER BY age DESC, pt_name;
